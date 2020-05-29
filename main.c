@@ -2,32 +2,25 @@
 #include<math.h>
 
 //-----Protótipos------------------------//
-double f(double x);                   //Equação 1
-double df_first(double x);            //Primeira derivada da equação 1
-double df_second(double x);           //Segunda derivada da equação 2
+double f(double x);                                                               //Equação 1
+double df_first(double x);                                                        //Primeira derivada da equação 1
+double df_second(double x);                                                       //Segunda derivada da equação 2
 
-double f_bissectionMethod(double x);  //Método de Bissecção aplicado à equação 1
-double f_secantMethod(double x);      //Método de Secante aplicado à equação 1
-double newtonMethod(double x, double function(), double dFunction_first());      //Método de Newton 
-double f_halleyMethod(double x);      //Método de Halley aplicado à equação 1
 //---------------------------------------//
-double g(double x);                   //Equação 2
-double dg_first(double x);            //Primeira derivada da equação 2
-double dg_second(double x);           //Segunda derivada da equação 2
+double g(double x);                                                               //Equação 2
+double dg_first(double x);                                                        //Primeira derivada da equação 2
+double dg_second(double x);                                                       //Segunda derivada da equação 2
 
-double g_bissectionMethod(double x);    //Método de Bissecção aplicado à equação 2
-double g_secantMethod(double x);      //Método de Secante aplicado à equação 2
-double g_newtonMethod(double x);      //Método de Newton aplicado à equação 2
-double g_halleyMethod(double x);      //Método de Halley aplicado à equação 2
 //---------------------------------------//
-double h(double x);                   //Equação 3
-double dh_first(double x);            //Primeira derivada da equação 3
-double dh_second(double x);           //Segunda derivada da equação 3
+double h(double x);                                                               //Equação 3
+double dh_first(double x);                                                        //Primeira derivada da equação 3
+double dh_second(double x);                                                       //Segunda derivada da equação 3
 
-double h_bissectionMethod(double x);  //Método de Bissecção aplicado à equação 3
-double h_secantMethod(double x);      //Método de Secante aplicado à equação 3
-double h_newtonMethod(double x);      //Método de Newton aplicado à equação 3
-double h_halleyMethod(double x);      //Método de Halley aplicado à equação 3
+double bissectionMethod(double x);  //Método de Bissecção aplicado à equação 1
+double secantMethod(double x);      //Método de Secante aplicado à equação 1
+double newtonMethod(double x, double function(), double dFunction_first());       //Método de Newton 
+double halleyMethod(double x);      //Método de Halley aplicado à equação 1
+
 //---------------------------------------//
 
 int main(void) {
