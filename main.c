@@ -3,72 +3,76 @@
 
 //-----Prototypes------------------------//
 
-double function1(double x);
-double function2(double x);
-double function3(double x);
-double dfunction1(double x);
-double dfunction2(double x);
-double dfunction3(double x);
-double ddfunction1(double x);
-double ddfunction2(double x);
-double ddfunction3(double x);
+double f(double x);                   //Equação 1
+double df_first(double x);            //Primeira derivada da equação 1
+double df_second(double x);           //Segunda derivada da equação 2
 
-double bissectionMethod1(double x);
-double bissectionMethod2(double x);
-double bissectionMethod3(double x);
-double secantMethod1(double x);
-double secantMethod2(double x);
-double secantMethod3(double x);
-double newtonMethod1(double x);
-double newtonMethod2(double x);
-double newtonMethod3(double x);
-double halleyMethod1(double x);
-double halleyMethod2(double x);
-double halleyMethod3(double x);
+double bissectionMethod_f(double x);
+double secantMethod_f(double x);
+double newtonMethod_f(double x);
+double halleyMethod_f(double x);
+
+double g(double x);                   //Equação 2
+double dg_first(double x);            //Primeira derivada da equação 2
+double dg_second(double x);           //Segunda derivada da equação 2
+
+double bissectionMethod(double x);    
+double g_secantMethod(double x);
+double g_newtonMethod(double x);
+double g_halleyMethod(double x);
+
+double h(double x);                   //Equação 3
+double dh_first(double x);            //Primeira derivada da equação 3
+double dh_second(double x);           //Segunda derivada da equação 3
+
+double h_bissectionMethod(double x);
+double h_secantMethod(double x);
+double h_newtonMethod(double x);
+double h_halleyMethod(double x);
 //---------------------------------------//
 
 int main(void) {
   double i;
   i = cos(2*M_PI);
-  printf("%f\n", i);
+  printf("%.16f\n", i);
   return 0;
 }
 
 //-----Equations-------------------------//
 
-double function1(double x){
+double f(double x){
   return (x - cos(x));
 }
 
-double function2(double x){
+double g(double x){
   return (x*x*x - 9*x*x + 27*x -27);
 }
 
-double function3(double x){
+double h(double x){
   return (exp(x) - cos(x));
 }
 
-double dfunction1(double x){
+double df_first(double x){
   return (1 + sin(x));
 }
 
-double dfunction2(double x){
+double dg_first(double x){
   return (3*x*x-18*x+27);
 }
 
-double dfunction3(double x){
+double dh_first(double x){
   return (exp(x) + sin(x));
 }
 
-double ddfunction1(double x){
+double df_second(double x){
   return (cos(x));
 }
 
-double ddfunction2(double x){
+double dg_second(double x){
   return (6*x-18);
 }
 
-double ddfunction3(double x){
+double dh_second(double x){
   return (exp(x) + cos(x));
 }
 
