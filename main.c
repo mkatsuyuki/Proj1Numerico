@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include<math.h>
 
+//-----Prototypes------------------------//
+
 double function1(double x);
 double function2(double x);
 double function3(double x);
@@ -11,7 +13,19 @@ double ddfunction1(double x);
 double ddfunction2(double x);
 double ddfunction3(double x);
 
-//--------------------------------------//
+double bissectionMethod1(double x);
+double bissectionMethod2(double x);
+double bissectionMethod3(double x);
+double secantMethod1(double x);
+double secantMethod2(double x);
+double secantMethod3(double x);
+double newtonMethod1(double x);
+double newtonMethod2(double x);
+double newtonMethod3(double x);
+double halleyMethod1(double x);
+double halleyMethod2(double x);
+double halleyMethod3(double x);
+//---------------------------------------//
 
 int main(void) {
   double i;
@@ -19,6 +33,8 @@ int main(void) {
   printf("%f\n", i);
   return 0;
 }
+
+//-----Equations-------------------------//
 
 double function1(double x){
   return (x - cos(x));
@@ -55,3 +71,5 @@ double ddfunction2(double x){
 double ddfunction3(double x){
   return (exp(x) + cos(x));
 }
+
+//------Methods-------------------------//
