@@ -1,7 +1,7 @@
     //--------Método da Bissecção------------------------------------//
     //A função retorna o tamanho do vetor bissection_results após fazer o cálculo da raiz
-    FILE *fp;
-    fp=fopen("resultados.txt", "w+");
+    //FILE *fp;
+    //fp=fopen("resultados.txt", "w+");
 
     printf("Metodo da Bisseccao:\n");
     printf("Equacao 1:\n");

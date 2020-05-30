@@ -26,10 +26,8 @@
   int h_halley_method(double x, double* halley_results);                             //Método de Halley aplicado à equação 3
 
   //---------------------------------------//
-  //double bissection(double* a, double* b, double fa, double fx);
-  //---------------------------------------//
 
-  char* concatena_linha(double* bissection_results, int tamanho_bissection,double* secant_results, int tamanho_secant,double* newton_results,int tamanho_newton, double* halley_results,int tamanho_halley, int i);
+  const char* concatena_linha(double* bissection_results, int tamanho_bissection,double* secant_results, int tamanho_secant,double* newton_results,int tamanho_newton, double* halley_results,int tamanho_halley, int i);
 
   int main(void) {
     //Declaração de variáveis
@@ -39,7 +37,7 @@
     double secant_results[50];
     double newton_results[50];
     double halley_results[20];
-    
+
     FILE *fp;
     fp=fopen("resultados.txt", "w+");
 
@@ -73,9 +71,11 @@
     for(i=0;i<tamanho4;i++){
       printf("x:%.16f i:%d\n", halley_results[i], i);
     }
-
-    puts(concatena_linha(bissection_results, tamanho1, secant_results, tamanho2, newton_results, tamanho3, halley_results, tamanho4, 2));
-
+    //puts(concatena_linha(bissection_results, tamanho1, secant_results, tamanho2, newton_results, tamanho3, halley_results, tamanho4, 2));
+    concatena_linha(bissection_results, tamanho1, secant_results, tamanho2, newton_results, tamanho3, halley_results, tamanho4, 2);
+    char teste[]="teste";
+    puts(teste);
+    printf("You entered %s",teste);  
     return 0;
   }
 
@@ -300,9 +300,11 @@
     return i; 
   }
   //---------------------------------------//
-  char* concatena_linha(double* bissection_results, int tamanho_bissection,double* secant_results, int tamanho_secant,double* newton_results,int tamanho_newton, double* halley_results,int tamanho_halley, int i){
-    char saida[80];
+  const char* concatena_linha(double* bissection_results, int tamanho_bissection,double* secant_results, int tamanho_secant,double* newton_results,int tamanho_newton, double* halley_results,int tamanho_halley, int i){
+    char* saida = (char *) malloc(sizeof(char ) * 80);
     char aux[17];
+    strcpy(saida, ";"); 
+    printf("1");
     if(i <= tamanho_bissection){
       sprintf(aux, "%.16f;", bissection_results[i]);
       strcpy(saida, aux); 
@@ -327,6 +329,8 @@
     }else{
       strcpy(saida, ";");
     }
+    printf("3");
     puts(saida);
+    printf("4");
     return saida;
   }
