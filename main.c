@@ -26,115 +26,56 @@
   int h_halley_method(double x, double* halley_results);                             //Método de Halley aplicado à equação 3
 
   //---------------------------------------//
-  double bissection(double* a, double* b, double fa, double fx);
+  //double bissection(double* a, double* b, double fa, double fx);
   //---------------------------------------//
 
-  const char* concatena_linha(double* bissection_results,double* secant_results, double* newton_results, double* halley_results, int i);
+  char* concatena_linha(double* bissection_results, int tamanho_bissection,double* secant_results, int tamanho_secant,double* newton_results,int tamanho_newton, double* halley_results,int tamanho_halley, int i);
 
   int main(void) {
     //Declaração de variáveis
-    int i, tamanho;
+    int i, tamanho1,tamanho2,tamanho3,tamanho4;
     double a, b;
     double bissection_results[60];
     double secant_results[50];
     double newton_results[50];
     double halley_results[20];
-    char resultados[100];
-
     
+    FILE *fp;
+    fp=fopen("resultados.txt", "w+");
+
     //--------Método da Bissecção------------------------------------//
     //A função retorna o tamanho do vetor bissection_results após fazer o cálculo da raiz
-    FILE *fp;
-    fp=fopen("testeee.bin", "w+");
-
     printf("Metodo da Bisseccao:\n");
     printf("Equacao 1:\n");
-    tamanho = f_bissection_method(0, 2, bissection_results);
-
-    for(i=0;i<tamanho;i++){
+    tamanho1 = f_bissection_method(0, 2, bissection_results);
+    for(i=0;i<tamanho1;i++){
       //printf("x:%.16f i:%d\n", bissection_results[i], i);
       fprintf(fp,"x:%.16f i:%d\n", bissection_results[i], i);
     }
-    fclose(fp);
-    
-    printf("\nEquacao 2:\n");
-    tamanho = g_bissection_method(1, 6, bissection_results);
-    for(i=0;i<tamanho;i++){
-      printf("x:%.16f i:%d\n", bissection_results[i], i);
-    }
-    
-    
-    printf("\nEquacao 3:\n");
-    tamanho = h_bissection_method(-1, 2, bissection_results);
-    for(i=0;i<tamanho;i++){
-      printf("x:%.16f i:%d\n", bissection_results[i], i);
-    }
-    
     //--------Método da Secante----------------------------------------//
     printf("\nMetodo da Secante:\n");
     printf("Equacao 1:\n");
-    tamanho = f_secant_method(0, 2, secant_results);
-    for(i=0;i<tamanho;i++){
+    tamanho2 = f_secant_method(0, 2, secant_results);
+    for(i=0;i<tamanho2;i++){
       printf("x:%.16f i:%d\n", secant_results[i], i);
     }
-    
-    
-    printf("\nEquacao 2:\n");
-    tamanho = g_secant_method(1, 5, secant_results);
-    for(i=0;i<tamanho;i++){
-      printf("x:%.16f i:%d\n", secant_results[i], i);
-    }
-    
-    
-    printf("\nEquacao 3:\n");
-    tamanho = h_secant_method(1, 2, secant_results);
-    for(i=0;i<tamanho;i++){
-      printf("x:%.16f i:%d\n", secant_results[i], i);
-    }
-    
      //--------Método de Newton----------------------------------------//
     printf("\nMetodo de Newton:\n");
     printf("Equacao 1:\n");
-    tamanho = f_newton_method(1, newton_results);
-    for(i=0;i<tamanho;i++){
+    tamanho3 = f_newton_method(1, newton_results);
+    for(i=0;i<tamanho3;i++){
       printf("x:%.16f i:%d\n", newton_results[i], i);
     }
-    
-    
-    printf("\nEquacao 2:\n");
-    tamanho = g_newton_method(2, newton_results);
-    for(i=0;i<tamanho;i++){
-      printf("x:%.16f i:%d\n", newton_results[i], i);
-    }
-    
-    
-    printf("\nEquacao 3:\n");
-    tamanho = h_newton_method(1, newton_results);
-    for(i=0;i<tamanho;i++){
-      printf("x:%.16f i:%d\n", newton_results[i], i);
-    }
-    
    //--------Método de Halley----------------------------------------//
     printf("\nMetodo de Halley:\n");
     printf("Equacao 1:\n");
-     tamanho = f_halley_method(1, halley_results);
-    for(i=0;i<tamanho;i++){
+     tamanho4 = f_halley_method(1, halley_results);
+    for(i=0;i<tamanho4;i++){
       printf("x:%.16f i:%d\n", halley_results[i], i);
     }
-    
-    
-    printf("Equacao 2:\n");
-     tamanho = g_halley_method(2, halley_results);
-    for(i=0;i<tamanho;i++){
-      printf("x:%.16f i:%d\n", halley_results[i], i);
-    }
-    
-    
-    printf("Equacao 3:\n");
-     tamanho = h_halley_method(1, halley_results);
-    for(i=0;i<tamanho;i++){
-      printf("x:%.16f i:%d\n", halley_results[i], i);
-    }
+
+    puts(concatena_linha(bissection_results, tamanho1, secant_results, tamanho2, newton_results, tamanho3, halley_results, tamanho4, 2));
+
     return 0;
   }
 
@@ -217,7 +158,7 @@
     {
       i++;
       bissection_results[i] = bissection(&a, &b, f(a, 0), f((a+b)/2, 0));
-    } while(fabs(bissection_results[i]-bissection_results[i-1]) > 0.000000000000001);
+    } while(fabs(bissection_results[i]-bissection_results[i-1]) > 0.000000000000001); 
     i++;
     return i;
   }
@@ -359,7 +300,33 @@
     return i; 
   }
   //---------------------------------------//
-
-  const char* concatena_linha(double* bissection_results,double* secant_results, double* newton_results, double* halley_results, int i){
-    char[200];
+  char* concatena_linha(double* bissection_results, int tamanho_bissection,double* secant_results, int tamanho_secant,double* newton_results,int tamanho_newton, double* halley_results,int tamanho_halley, int i){
+    char saida[80];
+    char aux[17];
+    if(i <= tamanho_bissection){
+      sprintf(aux, "%.16f;", bissection_results[i]);
+      strcpy(saida, aux); 
+    }else{
+      strcpy(saida, ";"); 
+    }
+    if(i <= tamanho_secant){
+      sprintf(aux, "%.16f;", secant_results[i]);
+      strcpy(saida, aux); 
+    }else{
+      strcpy(saida, ";");
+    }
+    if(i <= tamanho_newton){
+      sprintf(aux, "%.16f;", newton_results[i]);
+      strcpy(saida, aux); 
+    }else{
+      strcpy(saida, ";");
+    }
+    if(i <= tamanho_halley){
+      sprintf(aux, "%.16f;", newton_results[i]);
+      strcpy(saida, aux); 
+    }else{
+      strcpy(saida, ";");
+    }
+    puts(saida);
+    return saida;
   }
