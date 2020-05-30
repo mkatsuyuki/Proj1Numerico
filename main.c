@@ -5,6 +5,8 @@
   #include "equations.h"
   #include "methods.h"
 
+//----Hey----//
+
   const char* concatena_linha(double* bissection_results, int tamanho_bissection,double* secant_results, int tamanho_secant,double* newton_results,int tamanho_newton, double* halley_results,int tamanho_halley, int i);
 
   int main(void) {
