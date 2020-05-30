@@ -5,7 +5,8 @@
   #include "equations.h"
   #include "methods.h"
 
-//----Hey----//
+//----Hey----//cls
+
 
   const char* concatena_linha(double* bissection_results, int tamanho_bissection,double* secant_results, int tamanho_secant,double* newton_results,int tamanho_newton, double* halley_results,int tamanho_halley, int i);
 
@@ -42,6 +43,12 @@
     tamanho3 = g_newton_method(2, newton_results);            //Execução do método de newton aplicado na equação 1
     tamanho4 = g_halley_method(2, halley_results);            //Execução do método de halley aplicado na equação 1
 
+     printf("\n\n/---------------/\n\n");
+    for(i=0;i<tamanho4;i++){
+      printf("x:%.16f i:%d\n", halley_results[i], i);
+    }
+    printf("\n\n/------------------/\n\n");
+
     fprintf(fp, "i;Bissection;Section;Newton;Halley\n");
     for(i = 0; i < 52 ; i++){
       fprintf(fp, "%s\n", concatena_linha(bissection_results, tamanho1, secant_results, tamanho2, newton_results, tamanho3, halley_results, tamanho4, i));
@@ -55,12 +62,15 @@
     tamanho2 = h_secant_method(1, 2, secant_results);         //Execução do método de secante aplicado na equação 1
     tamanho3 = h_newton_method(1, newton_results);            //Execução do método de newton aplicado na equação 1
     tamanho4 = h_halley_method(1, halley_results);            //Execução do método de halley aplicado na equação 1
+    
+
 
     fprintf(fp, "i;Bissection;Section;Newton;Halley\n");
     for(i = 0; i < 52 ; i++){
       fprintf(fp, "%s\n", concatena_linha(bissection_results, tamanho1, secant_results, tamanho2, newton_results, tamanho3, halley_results, tamanho4, i));
     }
     fclose(fp);
+    
 
     return 0;
   }
@@ -89,7 +99,7 @@
       strcat(saida, ";");
     }
     if(i < tamanho_halley){
-      sprintf(aux, "%.16f", newton_results[i]);
+      sprintf(aux, "%.16f", halley_results[i]);
       strcat(saida, aux); 
     }else{
       strcat(saida, ";");
