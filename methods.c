@@ -1,8 +1,5 @@
 #include "methods.h"
 #include "equations.h"
-//extern double f(double x, int i); 
-//extern double g(double x, int i); 
-//extern double h(double x, int i); 
 
 //------Métodos-------------------------//
 //A função do método da bisseção recebe os valores a e b do intervalo onde será encontrado a raiz
