@@ -1,5 +1,11 @@
 {
     "files.associations": {
         "cmath": "c"
+    },
+    "files.exclude": {
+        "**.exe": true,
+        "**.csv": true,
+        "**.xlsx": true,
+        "**.docx": true
     }
-}
+} 
