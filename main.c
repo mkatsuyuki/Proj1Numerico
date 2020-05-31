@@ -43,12 +43,6 @@
     tamanho3 = g_newton_method(2, newton_results);            //Execução do método de newton aplicado na equação 1
     tamanho4 = g_halley_method(2, halley_results);            //Execução do método de halley aplicado na equação 1
 
-     printf("\n\n/---------------/\n\n");
-    for(i=0;i<tamanho4;i++){
-      printf("x:%.16f i:%d\n", halley_results[i], i);
-    }
-    printf("\n\n/------------------/\n\n");
-
     fprintf(fp, "i;Bissection;Section;Newton;Halley\n");
     for(i = 0; i < 52 ; i++){
       fprintf(fp, "%s\n", concatena_linha(bissection_results, tamanho1, secant_results, tamanho2, newton_results, tamanho3, halley_results, tamanho4, i));
@@ -104,6 +98,6 @@
     }else{
       strcat(saida, ";");
     }
-    puts(saida);
+    //puts(saida);
     return saida;
   }
